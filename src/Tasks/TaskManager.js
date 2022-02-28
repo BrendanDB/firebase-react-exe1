@@ -14,8 +14,8 @@ function TaskManager() {
       collection(db, "tasks"),
       orderBy("created", "desc")
     );
-    onSnapshot(taskColRef, (doc) => {
-      console.log("Current data: ", doc.data());
+    onSnapshot(taskColRef, (snapshot) => {
+      snapshot.docs.map((doc) => setTasks(doc.data));
     });
   }, []);
 
