@@ -18,6 +18,8 @@ function Task({ id, title, description, completed }) {
       // à faire
       // update seulement le membre completed
       // Utiliser le state *checked*
+      const newDoc = doc(db, "tasks", id);
+      updateDoc(newDoc, { completed: checked });
     } catch (err) {
       alert(err);
     }
@@ -26,6 +28,7 @@ function Task({ id, title, description, completed }) {
   const handleDelete = async () => {
     try {
       // à faire
+      await deleteDoc(doc(db, "tasks", id));
     } catch (err) {
       alert(err);
     }

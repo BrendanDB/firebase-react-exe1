@@ -14,6 +14,8 @@ function EditTask({ open, onClose, toEditTitle, toEditDescription, id }) {
       // À faire
       // update seulement les membres title et description
       // Utiliser les states *title* et *description*
+      const newDoc = doc(db, "tasks", id);
+      updateDoc(newDoc, { title: title, description: description });
       onClose();
     } catch (err) {
       alert(err);

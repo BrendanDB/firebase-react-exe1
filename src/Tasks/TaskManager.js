@@ -15,7 +15,14 @@ function TaskManager() {
       orderBy("created", "desc")
     );
     onSnapshot(taskColRef, (snapshot) => {
-      snapshot.docs.map((doc) => setTasks(doc.data));
+      let liste = [];
+      snapshot.docs.map((doc) =>
+        liste.push({
+          id: doc.id,
+          data: doc.data(),
+        })
+      );
+      setTasks(liste);
     });
   }, []);
 
